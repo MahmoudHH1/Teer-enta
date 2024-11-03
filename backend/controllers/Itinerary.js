@@ -154,7 +154,7 @@ exports.deleteItinerary = async (req, res, next) => {
         await Itinerary.findByIdAndDelete(id);
         res
             .status(200)
-            .json({message: "Itinerary deleted successfully", data: itinerary});
+            .json({message: "Itinerary deleted successfully ", data: itinerary});
     } catch (err) {
         errorHandler.SendError(res, err);
     }
@@ -187,7 +187,7 @@ exports.flagInappropriate = async (req, res) => {
             { _id: { $in: userIds } },  // Find users with IDs in userIds array
             { $inc: { wallet: itineraryPrice } }  // Increment the wallet by the itinerary price
         );
-
+        //
         return res.status(200).json({ message: "Itinerary flagged inappropriate and users refunded successfully" });
     } catch (err) {
         errorHandler.SendError(res, err);
