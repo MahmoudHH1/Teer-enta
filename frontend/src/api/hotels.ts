@@ -26,3 +26,11 @@ export const bookHotel = async ({ hotel, offer, guests, payments }) => {
   );
 };
 
+export const getBookedHotels = async () => {
+  return await axios.get(`${API_BASE_URL}/getBookedHotels`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+}
+
