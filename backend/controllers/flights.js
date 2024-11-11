@@ -169,3 +169,16 @@ exports.bookFlight = async (req, res) => {
         errorHandler.SendError(res, err);
     }
 };
+
+exports.getBookedFlights = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const flights = await BookedFlight.find({ createdBy: userId });
+        if (flights.length === 0) {
+            return res.status(404).json({ message: 'No flights found' });
+        }
+        res.status(200).json(flights);
+    } catch (err) {
+        errorHandler.SendError(res, err);
+    }
+}

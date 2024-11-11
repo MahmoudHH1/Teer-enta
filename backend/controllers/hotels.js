@@ -158,6 +158,18 @@ exports.bookHotel = async (req, res) => {
         errorHandler.SendError(res, err);
     }
 }
+exports.getBookedHotels = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const hotels = await BookedHotel.find({ createdBy: userId });
+        if (hotels.length === 0) {
+            return res.status(404).json({ message: 'No hotels found' });
+        }
+        res.status(200).json(hotels);
+    } catch (err) {
+        errorHandler.SendError(res, err);
+    }
+}
 
 
 
