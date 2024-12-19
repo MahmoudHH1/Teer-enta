@@ -97,7 +97,6 @@ This section outlines the coding standards and best practices followed in the de
 
 ### Tools & Deployment
 - 📊 **Git** & **GitHub**
-- 🚀 Deployment on [Your Platform]
 - 🔐 **JWT Authentication**
 - 📡**Cloudinary**
 - **Firebase** 
